@@ -27,7 +27,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.VR.WSA.Input;
+
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -64,7 +64,7 @@ public class ClickerInput : MonoBehaviour {
     /// <summary>
     /// UnityEngine.VR.WSA.Input class to manage click detection. [internal use]
     /// </summary>
-    GestureRecognizer recognizer;
+    UnityEngine.XR.WSA.Input.GestureRecognizer recognizer;
 
     /// <summary>
     /// Unity Monobehavior function. Initialize the click detection, and callback registration. 
@@ -74,8 +74,8 @@ public class ClickerInput : MonoBehaviour {
         Instance = this;
 
         // Set up a GestureRecognizer to detect Select gestures.
-        recognizer = new GestureRecognizer();
-        recognizer.TappedEvent += (source, tapCount, ray) => {
+        recognizer = new UnityEngine.XR.WSA.Input.GestureRecognizer();
+        recognizer.Tapped += (args) => {
             eventClickerClick.Invoke();
         };
         recognizer.StartCapturingGestures();
